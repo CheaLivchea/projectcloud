@@ -7,7 +7,7 @@ const Shop = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const apiUrl = "http://3.214.91.27:1337/api/products?populate=image";
+    const apiUrl = "https://projectesting.site/api/products?populate=image"; // updated API URL
 
     const fetchProducts = async () => {
       try {
@@ -46,7 +46,7 @@ const Shop = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 ">
+    <div className="max-w-6xl mx-auto px-6 py-10">
       <h1 className="text-3xl text-center font-bold mb-8">Top Selling Products</h1>
       {products.length === 0 ? (
         <p className="text-gray-700 bg-white p-4 rounded">No products available.</p>
@@ -56,11 +56,9 @@ const Shop = () => {
             // Support both flat and standard Strapi structures
             const productData = product.attributes || product;
             const { id, name, price, rating, image } = productData;
-            const imageUrl = image?.url
-              ? `http://3.214.91.27:1337${image.url}`
-              : image?.data?.attributes?.url
-                ? `http://3.214.91.27:1337${image.data.attributes.url}`
-                : "https://via.placeholder.com/300x200?text=No+Image";
+            
+            // Updated image URL construction
+            const imageUrl = image?.url ? `https://projectesting.site${image.url}` : "https://via.placeholder.com/300x200?text=No+Image";
 
             return (
               <li
@@ -69,7 +67,7 @@ const Shop = () => {
               >
                 <Link
                   to={`/product/${id}`}
-                  className="w-full bg-white  border-gray-200 rounded-xl shadow-sm p-6 "
+                  className="w-full bg-gray border-gray-200 rounded-xl shadow-sm p-6"
                   aria-label={`View details for ${name || "product"}`}
                 >
                   <div className="relative aspect-[4/3] w-full overflow-hidden rounded mb-4">
@@ -86,7 +84,7 @@ const Shop = () => {
                         console.log(`Successfully loaded image for ${name}: ${imageUrl}`)
                       }
                     />
-                    {!image?.url && !image?.data?.attributes?.url && (
+                    {!image?.url && (
                       <span className="absolute bottom-2 left-2 text-xs text-gray-500 bg-white px-1 rounded">
                         Image not available
                       </span>
