@@ -56,9 +56,13 @@ const Shop = () => {
             // Support both flat and standard Strapi structures
             const productData = product.attributes || product;
             const { id, name, price, rating, image } = productData;
-            
+
             // Updated image URL construction
-            const imageUrl = image?.url ? `https://projectesting.site${image.url}` : "https://via.placeholder.com/300x200?text=No+Image";
+            const imageUrl = image?.url
+              ? image.url.startsWith('http') // Check if the URL already has the full path
+                ? image.url // Use the full URL as it is
+                : `https://projectesting.site${image.url}` // Prepend the domain if it's a relative path
+              : "https://via.placeholder.com/300x200?text=No+Image"; // Fallback to placeholder
 
             return (
               <li

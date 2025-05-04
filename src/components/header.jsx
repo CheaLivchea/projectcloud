@@ -79,7 +79,7 @@ const Header = () => {
               to="/cart"
               className="p-2 hover:bg-gray-100 rounded-full transition duration-300"
             >
-              <span class="material-symbols-outlined">shopping_cart</span>
+              <span className="material-symbols-outlined">shopping_cart</span>
             </NavLink>
 
             <NavLink
@@ -87,7 +87,7 @@ const Header = () => {
               className="p-2 hover:bg-gray-100 rounded-full transition duration-300"
             >
 
-              <span class="material-symbols-outlined">account_circle</span>
+              <span className="material-symbols-outlined">account_circle</span>
             </NavLink>
 
             </div>
