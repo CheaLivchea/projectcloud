@@ -74,11 +74,11 @@ const Shop = () => {
                   className="w-full bg-gray border-gray-200 rounded-xl shadow-sm p-6"
                   aria-label={`View details for ${name || "product"}`}
                 >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded mb-4">
+                  <div className="w-full h-[200px] flex justify-center items-center bg-white rounded mb-4 overflow-hidden">
                     <img
                       src={imageUrl}
                       alt={name || "Product"}
-                      className="w-full h-full object-cover rounded-xl"
+                      className="max-h-full max-w-full object-contain"
                       loading="lazy"
                       onError={(e) => {
                         e.target.src = "https://via.placeholder.com/300x200?text=Image+Failed";
